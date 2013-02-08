@@ -1,0 +1,50 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="19259" started-at="2013-02-08T04:51:57Z" finished-at="2013-02-08T04:52:17Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="19259" started-at="2013-02-08T04:51:57Z" finished-at="2013-02-08T04:52:17Z">
+      <class name="WebDriverWithHelperTest">
+        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)" name="setUp" is-config="true" duration-ms="9499" started-at="2013-02-08T04:51:58Z" finished-at="2013-02-08T04:52:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[icreativeapp]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[8e40a4f9-07bd-4bdb-88f2-806eb88c63ab]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[XP]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[public void WebDriverWithHelperTest.basic() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="PASS" signature="basic()" name="basic" duration-ms="8118" started-at="2013-02-08T04:52:07Z" finished-at="2013-02-08T04:52:15Z">
+        </test-method>
+        <test-method status="PASS" signature="tearDown()" name="tearDown" is-config="true" duration-ms="911" started-at="2013-02-08T04:52:16Z" finished-at="2013-02-08T04:52:17Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>
