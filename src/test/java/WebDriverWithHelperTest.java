@@ -85,6 +85,8 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
 
 
 
+
+
     /**
      * {@inheritDoc}
      * @return
@@ -94,6 +96,13 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
         SessionId sessionId = ((RemoteWebDriver)driver).getSessionId();
         return (sessionId == null) ? null : sessionId.toString();
     }
+
+private void printSessionId() {
+
+        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", (((RemoveWebDriver) driver).getSessionId()).toString(), "LOGIN");
+        System.out.println(message);
+    }
+
 
     @Test
     public void basic() throws Exception {
