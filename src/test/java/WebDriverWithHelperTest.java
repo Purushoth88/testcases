@@ -55,7 +55,8 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
      * @param method
      * @throws Exception
      */
-    @Parameters({"username", "key", "os", "browser", "browserVersion"})
+
+@Parameters({"username", "key", "os", "browser", "browserVersion"})
     @BeforeMethod
     public void setUp(@Optional("username") String username,
                       @Optional("key") String key,
@@ -79,6 +80,8 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
                 capabillities);
     }
+
+
 
     /**
      * {@inheritDoc}
