@@ -55,7 +55,30 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
      * @param method
      * @throws Exception
      */
-   
+    @Parameters({"username", "key", "os", "browser", "browserVersion"})
+    @BeforeMethod
+    public void setUp(@Optional("username") String username,
+                      @Optional("key") String key,
+                      @Optional("os") String os,
+                      @Optional("browser") String browser,
+                      @Optional("browserVersion") String browserVersion,
+                      Method method) throws Exception {
+
+        if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(key)) {
+           authentication = new SauceOnDemandAuthentication(username, key);
+        } else {
+           authentication = new SauceOnDemandAuthentication();
+        }
+
+        DesiredCapabilities capabillities = new DesiredCapabilities();
+        capabillities.setBrowserName(browser);
+        capabillities.setCapability("version", browserVersion);
+        capabillities.setCapability("platform", Platform.valueOf(os));
+        capabillities.setCapability("name", method.getName());
+        this.driver = new RemoteWebDriver(
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                capabillities);
+    }
 
     /**
      * {@inheritDoc}
