@@ -58,11 +58,11 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
 
 @Parameters({"username", "key", "os", "browser", "browserVersion"})
     @BeforeMethod
-    public void setUp(@Optional("username") String username,
-                      @Optional("key") String key,
-                      @Optional("os") String os,
-                      @Optional("browser") String browser,
-                      @Optional("browserVersion") String browserVersion,
+    public void setUp(@Optional("icreativeapp") String username,
+                      @Optional("8e40a4f9-07bd-4bdb-88f2-806eb88c63ab") String key,
+                      @Optional("XP") String os,
+                      @Optional("opera") String browser,
+                      @Optional("11") String browserVersion,
                       Method method) throws Exception {
 
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(key)) {
