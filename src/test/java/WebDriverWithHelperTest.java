@@ -58,11 +58,11 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
 
 @Parameters({"username", "key", "os", "browser", "browserVersion"})
     @BeforeMethod
-    public void setUp(@Optional("icreativeapp") String username,
-                      @Optional("8e40a4f9-07bd-4bdb-88f2-806eb88c63ab") String key,
-                      @Optional("XP") String os,
-                      @Optional("opera") String browser,
-                      @Optional("11") String browserVersion,
+    public void setUp(@Optional("username") String username,
+                      @Optional("key") String key,
+                      @Optional("os") String os,
+                      @Optional("browser") String browser,
+                      @Optional("browserVersion") String browserVersion,
                       Method method) throws Exception {
 
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(key)) {
@@ -71,15 +71,17 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
            authentication = new SauceOnDemandAuthentication();
         }
 
-        DesiredCapabilities capabillities = new DesiredCapabilities();
-        capabillities.setBrowserName(browser);
-        capabillities.setCapability("version", browserVersion);
-        capabillities.setCapability("platform", Platform.valueOf(os));
-        capabillities.setCapability("name", method.getName());
-        this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
-                capabillities);
+     
+
+    DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+    desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+    desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
+    desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+    WebDriver driver = new RemoteWebDriver(
+                new URL("http://icreativeapp:8e40a4f9-07bd-4bdb-88f2-806eb88c63ab@ondemand.saucelabs.com:80/wd/hub"),
+                desiredCapabilities);
     }
+
 
 
 
