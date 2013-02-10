@@ -56,20 +56,10 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
      * @throws Exception
      */
 
-@Parameters({"username", "key", "os", "browser", "browserVersion"})
-    @BeforeMethod
-    public void setUp(@Optional("icreativeapp") String username,
-                      @Optional("8e40a4f9-07bd-4bdb-88f2-806eb88c63ab") String key,
-                      @Optional("XP") String os,
-                      @Optional("opera") String browser,
-                      @Optional("11") String browserVersion,
-                      Method method) throws Exception {
 
-        if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(key)) {
-           authentication = new SauceOnDemandAuthentication(username, key);
-        } else {
-           authentication = new SauceOnDemandAuthentication();
-        }
+    @BeforeMethod
+    public void setUp()
+{
 
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
     desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
