@@ -56,26 +56,33 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
      * @throws Exception
      */
 
+
 @Parameters({"username", "key", "os", "browser", "browserVersion"})
-   
- @BeforeMethod
+    @BeforeMethod
+    public void setUp(@Optional("icreativeapp") String username,
+                      @Optional("8e40a4f9-07bd-4bdb-88f2-806eb88c63ab") String key,
+                      @Optional("XP") String os,
+                      @Optional("opera") String browser,
+                      @Optional("11") String browserVersion,
+                      Method method) throws Exception {
 
-    public void setUp()
-{
+        if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(key)) {
+           authentication = new SauceOnDemandAuthentication(username, key);
+        } else {
+           authentication = new SauceOnDemandAuthentication();
+        }
 
-
- DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-
-    desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
-    desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+ 
+ DesiredCapabilities capabillities= new DesiredCapabilities();
+    capabillities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+    capabillities.setVersion(System.getenv("SELENIUM_VERSION"));
+    capabillities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
     WebDriver driver = new RemoteWebDriver(
                 new URL("http://icreativeapp:8e40a4f9-07bd-4bdb-88f2-806eb88c63ab@ondemand.saucelabs.com:80/wd/hub"),
                 desiredCapabilities);
 
 
     }
-
 
 
 
