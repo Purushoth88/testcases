@@ -35,7 +35,7 @@ import org.openqa.selenium.interactions.Actions;
  * @author Rami Saleem
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class LoginFromCampaignPage implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class Login_From_Campaign implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
