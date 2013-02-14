@@ -35,7 +35,7 @@ import org.openqa.selenium.interactions.Actions;
  * @author Rami Saleem
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class WebDriverTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
