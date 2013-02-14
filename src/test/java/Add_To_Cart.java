@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
  * @author Rami Saleem
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class Add_To_Cart implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
