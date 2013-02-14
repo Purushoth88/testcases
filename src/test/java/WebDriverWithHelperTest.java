@@ -97,23 +97,21 @@ public class WebDriverWithHelperTest implements SauceOndrivermandSessionIdProvid
     @Test
     public void basic() throws Exception {
 
-        
-	System.setProperty("webdriver.chrome.driver", "d:/chromedriver.exe");
-	ChromeDriver d2=new ChromeDriver();
-	d2.get("http://markavip.com");
+
+	driver.get("http://markavip.com");
 	
-	WebDriverWait wait=new WebDriverWait(d2, 5);
+	WebDriverWait wait=new WebDriverWait(driver, 5);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
-	d2.findriverlement(By.id("super-featured-wrapper")).click();
+	driver.findriverlement(By.id("super-featured-wrapper")).click();
 	
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
 	
 	//Add Action Buildriverr to hover the item's box
-	WebElement productbox=d2.findriverlement(By.className("item-link"));
+	WebElement productbox=driver.findriverlement(By.className("item-link"));
 	//Hover the product's box
-	Actions buildriverr = new Actions(d2);
+	Actions buildriverr = new Actions(driver);
 	buildriverr.moveToElement(productbox).build().perform();
-	d2.findriverlement(By.className("hover-view")).click();
+	driver.findriverlement(By.className("hover-view")).click();
 	//Wait until showing the login pop-up
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("fb-login-section")));
 	//This to prevent the browser Auto selection for Registration the text-box.
@@ -126,12 +124,12 @@ public class WebDriverWithHelperTest implements SauceOndrivermandSessionIdProvid
 	converts=converts.replaceAll(":", "");
 	String newemail="test"+converts+"@test.com";
 	
-	d2.findriverlement(By.id("register_email")).sendKeys(newemail);
-	d2.findriverlement(By.id("register_gendriverr_male")).click();
-	d2.findriverlement(By.id("reg-send")).click();
-	d2.findriverlement(By.id("username_link")).getText();
+	driver.findriverlement(By.id("register_email")).sendKeys(newemail);
+	driver.findriverlement(By.id("register_gendriverr_male")).click();
+	driver.findriverlement(By.id("reg-send")).click();
+	driver.findriverlement(By.id("username_link")).getText();
 	String newusername="VIP Member";
-	Assert.assertEquals(d2.findriverlement(By.id("username_link")).getText(), newusername);
+	Assert.assertEquals(driver.findriverlement(By.id("username_link")).getText(), newusername);
 	
 	
 
