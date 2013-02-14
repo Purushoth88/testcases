@@ -1,4 +1,4 @@
-Fpackage test;
+package test;
 import org.openqa.selenium.remote.CapabilityType;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
@@ -26,23 +26,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
-
-//import java.util.NoSuchElementException;
-//import java.util.concurrent.TimeUnit;
-import java.util.Iterator;
-import java.util.Set;
-
-import org.openqa.selenium.By;
-//import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.remote.RemoteWebDriver;
-//import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-//import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
@@ -121,9 +104,7 @@ public class Add_To_Cart implements SauceOnDemandSessionIdProvider, SauceOnDeman
 
     @Test
 
-public void AddToCart()
-
-{
+public void AddToCart() throws Exception {
 
 	driver.get("http://markavip.com");
 	//driver.findElementByClassName("do_modal").click();
