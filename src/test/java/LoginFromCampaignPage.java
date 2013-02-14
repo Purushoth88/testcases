@@ -35,7 +35,7 @@ import org.openqa.selenium.interactions.Actions;
  * @author Rami Saleem
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class Login_From_Campaign_Page implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class LoginFromCampaignPage implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
@@ -95,7 +95,7 @@ public class Login_From_Campaign_Page implements SauceOnDemandSessionIdProvider,
     }
 
     @Test
-    public void LoginFromCampaignPage() throws Exception {
+    public void LoginFromCampaign() throws Exception {
 
 
         driver.get("http://markavip.com");
