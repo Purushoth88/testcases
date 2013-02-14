@@ -127,7 +127,7 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
 	//driver.findElement(By.id("username_link")).getText();
 	String welcometext="Frid  Norse";
 	
-wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
+//wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
 Assert.assertEquals(driver.findElement(By.id("username_link")).getText(), welcometext);
     	
 
