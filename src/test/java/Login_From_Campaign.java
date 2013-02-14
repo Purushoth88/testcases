@@ -95,7 +95,7 @@ public class Login_From_Campaign implements SauceOnDemandSessionIdProvider, Sauc
     }
 
     @Test
-    public void LoginFromCampaign() throws Exception {
+    public void basic() throws Exception {
 
 
         driver.get("http://markavip.com");
