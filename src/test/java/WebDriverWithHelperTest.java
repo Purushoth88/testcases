@@ -99,7 +99,7 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
 
 
         driver.get("http://markavip.com");
-	WebDriverWait wait=new WebDriverWait(driver, 5);
+	WebDriverWait wait=new WebDriverWait(driver, 55);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
 	driver.findElement(By.id("super-featured-wrapper")).click();
 	
