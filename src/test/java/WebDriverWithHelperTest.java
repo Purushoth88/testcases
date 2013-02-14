@@ -1,12 +1,12 @@
 package test;
 import org.openqa.selenium.remote.CapabilityType;
-import com.saucelabs.common.SauceOndrivermandAuthentication;
-import com.saucelabs.common.SauceOndrivermandSessionIdProvidriverr;
-import com.saucelabs.testng.SauceOndrivermandAuthenticationProvidriverr;
-import com.saucelabs.testng.SauceOndrivermandTestListener;
+import com.saucelabs.common.SauceOnDemandAuthentication;
+import com.saucelabs.common.SauceOnDemandSessionIdProvider;
+import com.saucelabs.testng.SauceOnDemandAuthenticationProvider;
+import com.saucelabs.testng.SauceOnDemandTestListener;
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.driversiredCapabilities;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.SessionId;
 import org.testng.annotations.*;
@@ -17,7 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.driversiredCapabilities;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,8 +27,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.WebElement;
+
 
 /**
  *
@@ -98,42 +97,38 @@ public class WebDriverWithHelperTest implements SauceOndrivermandSessionIdProvid
     public void basic() throws Exception {
 
 
-	driver.get("http://markavip.com");
+		driver.get("http://markavip.com");
 	
 	WebDriverWait wait=new WebDriverWait(driver, 5);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
-	driver.findriverlement(By.id("super-featured-wrapper")).click();
+	driver.findElement(By.id("super-featured-wrapper")).click();
 	
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
 	
-	//Add Action Buildriverr to hover the item's box
-	WebElement productbox=driver.findriverlement(By.className("item-link"));
+	//Add Action Builder to hover the item's box
+	WebElement productbox=driver.findElement(By.className("item-link"));
 	//Hover the product's box
-	Actions buildriverr = new Actions(driver);
-	buildriverr.moveToElement(productbox).build().perform();
-	driver.findriverlement(By.className("hover-view")).click();
+	Actions builder = new Actions(driver);
+	builder.moveToElement(productbox).build().perform();
+
+	driver.findElement(By.className("hover-view")).click();
+	
 	//Wait until showing the login pop-up
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("fb-login-section")));
+
 	//This to prevent the browser Auto selection for Registration the text-box.
 	wait.until(ExpectedConditions.elementToBeClickable(By.id("register_email")));
 	
-
-	Date currentdate=new Date();
-	String converts=currentdate.toString();
-	converts=converts.replaceAll(" ", "");
-	converts=converts.replaceAll(":", "");
-	String newemail="test"+converts+"@test.com";
-	
-	driver.findriverlement(By.id("register_email")).sendKeys(newemail);
-	driver.findriverlement(By.id("register_gendriverr_male")).click();
-	driver.findriverlement(By.id("reg-send")).click();
-	driver.findriverlement(By.id("username_link")).getText();
-	String newusername="VIP Member";
-	Assert.assertEquals(driver.findriverlement(By.id("username_link")).getText(), newusername);
+	//Enter login account info
+	driver.findElement(By.id("login_email")).click();
+	driver.findElement(By.id("login_email")).sendKeys("icreativeapp@gmail.com");
+	driver.findElement(By.id("pass")).sendKeys("147852");
+	driver.findElement(By.id("login-send")).click();
+	driver.findElement(By.id("username_link")).getText();
+	String welcometext="Frid Norse";
+	Assert.assertEquals(driver.findElement(By.id("username_link")).getText(), welcometext);
 	
 	
-
-
     }
 
     @AfterMethod
