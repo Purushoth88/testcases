@@ -1,12 +1,12 @@
 package test;
 import org.openqa.selenium.remote.CapabilityType;
-import com.saucelabs.common.SauceOnDemandAuthentication;
-import com.saucelabs.common.SauceOnDemandSessionIdProvider;
-import com.saucelabs.testng.SauceOnDemandAuthenticationProvider;
-import com.saucelabs.testng.SauceOnDemandTestListener;
+import com.saucelabs.common.SauceOndrivermandAuthentication;
+import com.saucelabs.common.SauceOndrivermandSessionIdProvidriverr;
+import com.saucelabs.testng.SauceOndrivermandAuthenticationProvidriverr;
+import com.saucelabs.testng.SauceOndrivermandTestListener;
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.driversiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.SessionId;
 import org.testng.annotations.*;
@@ -17,7 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.driversiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,23 +27,24 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
 
 /**
  *
  * @author Ross Rowe
  */
-@Listeners({SauceOnDemandTestListener.class})
-public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+@Listeners({SauceOndrivermandTestListener.class})
+public class WebDriverWithHelperTest implements SauceOndrivermandSessionIdProvidriverr, SauceOndrivermandAuthenticationProvidriverr {
 
-    public SauceOnDemandAuthentication authentication;
+    public SauceOndrivermandAuthentication authentication;
 
     private WebDriver driver;
 
     /**
      * If the tests can rely on the username/key to be supplied by environment variables or the existence
-     * of a ~/.sauce-ondemand file, then we don't need to specify them as parameters, just create a new instance
-     * of {@link SauceOnDemandAuthentication} using the no-arg constructor.
+     * of a ~/.sauce-ondrivermand file, then we don't need to specify them as parameters, just create a new instance
+     * of {@link SauceOndrivermandAuthentication} using the no-arg constructor.
      * @param username
      * @param key
      * @param os
@@ -63,20 +64,20 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
                       Method method) throws Exception {
 
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(key)) {
-           authentication = new SauceOnDemandAuthentication(username, key);
+           authentication = new SauceOndrivermandAuthentication(username, key);
         } else {
-           authentication = new SauceOnDemandAuthentication();
+           authentication = new SauceOndrivermandAuthentication();
         }
 
 
 
- DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-        desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+ driversiredCapabilities driversiredCapabilities = new driversiredCapabilities();
+        driversiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+        driversiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
+        driversiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
         this.driver = new RemoteWebDriver(
-                new URL("http://icreativeapp:8e40a4f9-07bd-4bdb-88f2-806eb88c63ab@ondemand.saucelabs.com:80/wd/hub"),
-                desiredCapabilities);
+                new URL("http://icreativeapp:8e40a4f9-07bd-4bdb-88f2-806eb88c63ab@ondrivermand.saucelabs.com:80/wd/hub"),
+                driversiredCapabilities);
 
 
     }
@@ -87,7 +88,7 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
      * {@inheritDoc}
      * @return
      */
-    @Override
+    @Overridriver
     public String getSessionId() {
         SessionId sessionId = ((RemoteWebDriver)driver).getSessionId();
         return (sessionId == null) ? null : sessionId.toString();
@@ -96,54 +97,43 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
     @Test
     public void basic() throws Exception {
 
-        driver.get("http://markavip.com");
-	//driver.findElementByClassName("do_modal").click();
-        driver.findElement(By.className("do_modal")).click();
-	WebDriverWait wait=new WebDriverWait(driver, 25);
+        
+	System.setProperty("webdriver.chrome.driver", "d:/chromedriver.exe");
+	ChromeDriver d2=new ChromeDriver();
+	d2.get("http://markavip.com");
+	
+	WebDriverWait wait=new WebDriverWait(d2, 5);
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
+	d2.findriverlement(By.id("super-featured-wrapper")).click();
+	
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
+	
+	//Add Action Buildriverr to hover the item's box
+	WebElement productbox=d2.findriverlement(By.className("item-link"));
+	//Hover the product's box
+	Actions buildriverr = new Actions(d2);
+	buildriverr.moveToElement(productbox).build().perform();
+	d2.findriverlement(By.className("hover-view")).click();
+	//Wait until showing the login pop-up
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("fb-login-section")));
-
 	//This to prevent the browser Auto selection for Registration the text-box.
 	wait.until(ExpectedConditions.elementToBeClickable(By.id("register_email")));
 	
-	driver.findElement(By.id("login_email")).click();
-	driver.findElement(By.id("login_email")).sendKeys("icreativeapp@gmail.com");
-	driver.findElement(By.id("pass")).sendKeys("147852");
-	driver.findElement(By.id("login-send")).click();
 
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.carousel-chunk.big")));
-	driver.findElement(By.cssSelector("div.carousel-chunk.big")).click();
-
-
+	Date currentdate=new Date();
+	String converts=currentdate.toString();
+	converts=converts.replaceAll(" ", "");
+	converts=converts.replaceAll(":", "");
+	String newemail="test"+converts+"@test.com";
 	
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
-	driver.findElement(By.cssSelector("div.hover-view")).click();
+	d2.findriverlement(By.id("register_email")).sendKeys(newemail);
+	d2.findriverlement(By.id("register_gendriverr_male")).click();
+	d2.findriverlement(By.id("reg-send")).click();
+	d2.findriverlement(By.id("username_link")).getText();
+	String newusername="VIP Member";
+	Assert.assertEquals(d2.findriverlement(By.id("username_link")).getText(), newusername);
 	
-	String productname=driver.findElement(By.cssSelector("div.category-title")).getText();
 	
-	System.out.println(productname);
-	
-	driver.findElement(By.id("add-to-button")).click();
-	
-	//Select Size if required
-	if(driver.findElement(By.id("advice-required-entry-attribute185")).isDisplayed()==true)
-		
-	{
-		driver.findElement(By.cssSelector("li.sizeswatch-element")).click();
-		driver.findElement(By.id("add-to-button")).click();
-		
-	}
-	
-	//Check if the cart confirmation popup is displayed
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.ajaxcartpro_confirm")));
-	
-	//Navigate to the cart page
-	driver.findElement(By.linkText("your cart")).click();
-	
-	//Check the item's name
-	String productnameincart=driver.findElement(By.cssSelector("h2.product-name")).getText();
-	System.out.println(productnameincart);
-	Assert.assertEquals(productnameincart, productname);
-    	
 
 
     }
@@ -157,8 +147,8 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
      * {@inheritDoc}
      * @return
      */
-    @Override
-    public SauceOnDemandAuthentication getAuthentication() {
+    @Overridriver
+    public SauceOndrivermandAuthentication getAuthentication() {
         return authentication;
     }
 }
