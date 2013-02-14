@@ -106,39 +106,37 @@ public class Add_To_Cart implements SauceOnDemandSessionIdProvider, SauceOnDeman
 public void AddToCart()
 
 {
-	
-	System.setProperty("webdriver.chrome.driver", "d:/chromedriver.exe");
-	ChromeDriver d2=new ChromeDriver();
-	d2.get("http://markavip.com");
-	d2.findElementByClassName("do_modal").click();
-	WebDriverWait wait=new WebDriverWait(d2, 25);
+
+	driver.get("http://markavip.com");
+	driver.findElementByClassName("do_modal").click();
+	WebDriverWait wait=new WebDriverWait(driver, 25);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("fb-login-section")));
 
 	//This to prevent the browser Auto selection for Registration the text-box.
 	wait.until(ExpectedConditions.elementToBeClickable(By.id("register_email")));
 	
-	d2.findElement(By.id("login_email")).click();
-	d2.findElement(By.id("login_email")).sendKeys("icreativeapp@gmail.com");
-	d2.findElement(By.id("pass")).sendKeys("147852");
-	d2.findElement(By.id("login-send")).click();
+	driver.findElement(By.id("login_email")).click();
+	driver.findElement(By.id("login_email")).sendKeys("icreativeapp@gmail.com");
+	driver.findElement(By.id("pass")).sendKeys("147852");
+	driver.findElement(By.id("login-send")).click();
 
-	d2.findElement(By.cssSelector("div.carousel-chunk.big")).click();
+	driver.findElement(By.cssSelector("div.carousel-chunk.big")).click();
 	
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
-	d2.findElement(By.cssSelector("div.hover-view")).click();
+	driver.findElement(By.cssSelector("div.hover-view")).click();
 	
-	String productname=d2.findElement(By.cssSelector("div.category-title")).getText();
+	String productname=driver.findElement(By.cssSelector("div.category-title")).getText();
 	
 	System.out.println(productname);
 	
-	d2.findElement(By.id("add-to-button")).click();
+	driver.findElement(By.id("add-to-button")).click();
 	
 	//Select Size if required
-	if(d2.findElement(By.id("advice-required-entry-attribute185")).isDisplayed()==true)
+	if(driver.findElement(By.id("advice-required-entry-attribute185")).isDisplayed()==true)
 		
 	{
-		d2.findElement(By.cssSelector("li.sizeswatch-element")).click();
-		d2.findElement(By.id("add-to-button")).click();
+		driver.findElement(By.cssSelector("li.sizeswatch-element")).click();
+		driver.findElement(By.id("add-to-button")).click();
 		
 	}
 	
@@ -146,10 +144,10 @@ public void AddToCart()
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.ajaxcartpro_confirm")));
 	
 	//Navigate to the cart page
-	d2.findElement(By.linkText("your cart")).click();
+	driver.findElement(By.linkText("your cart")).click();
 	
 	//Check the item's name
-	String productnameincart=d2.findElement(By.cssSelector("h2.product-name")).getText();
+	String productnameincart=driver.findElement(By.cssSelector("h2.product-name")).getText();
 	System.out.println(productnameincart);
 	Assert.assertEquals(productnameincart, productname);
 
