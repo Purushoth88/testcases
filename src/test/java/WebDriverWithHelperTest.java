@@ -97,11 +97,35 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
     public void basic() throws Exception {
 
 
-driver.get("http://markavip.com");
-    	driver.findElement(By.className("do_modal")).click();
-    	WebDriverWait wait=new WebDriverWait(driver, 25);
-    	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("login-form")));
-    	Assert.assertTrue(driver.findElement(By.className("login-form")).isDisplayed());
+        driver.get("http://markavip.com");
+	WebDriverWait wait=new WebDriverWait(driver, 5);
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
+	driver.findElement(By.id("super-featured-wrapper")).click();
+	
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
+	
+	//Add Action Builder to hover the item's box
+	WebElement productbox=driver.findElement(By.className("item-link"));
+	//Hover the product's box
+	Actions builder = new Actions(driver);
+	builder.moveToElement(productbox).build().perform();
+
+	driver.findElement(By.className("hover-view")).click();
+	
+	//Wait until showing the login pop-up
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("fb-login-section")));
+
+	//This to prevent the browser Auto selection for Registration the text-box.
+	wait.until(ExpectedConditions.elementToBeClickable(By.id("register_email")));
+	
+	//Enter login account info
+	driver.findElement(By.id("login_email")).click();
+	driver.findElement(By.id("login_email")).sendKeys("icreativeapp@gmail.com");
+	driver.findElement(By.id("pass")).sendKeys("147852");
+	driver.findElement(By.id("login-send")).click();
+	driver.findElement(By.id("username_link")).getText();
+	String welcometext="Frid Norse";
+	Assert.assertEquals(driver.findElement(By.id("username_link")).getText(), welcometext);
     	
 
 
