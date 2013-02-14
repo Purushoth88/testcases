@@ -110,7 +110,7 @@ driver.get("http://markavip.com");
 	driver.findElement(By.id("pass")).sendKeys("147852");
 	driver.findElement(By.id("login-send")).click();
 
-	driver.findElement(By.cssSelector("div.carousel-chunk.big")).click();
+	driver.findElement(By.id("super-featured-wrapper")).click();
 	
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
 	driver.findElement(By.cssSelector("div.hover-view")).click();
