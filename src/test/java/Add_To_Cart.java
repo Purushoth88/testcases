@@ -1,4 +1,4 @@
-package test;
+Fpackage test;
 import org.openqa.selenium.remote.CapabilityType;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
@@ -126,7 +126,8 @@ public void AddToCart()
 {
 
 	driver.get("http://markavip.com");
-	driver.findElementByClassName("do_modal").click();
+	//driver.findElementByClassName("do_modal").click();
+        driver.findElement(By.className("do_modal")).click();
 	WebDriverWait wait=new WebDriverWait(driver, 25);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("fb-login-section")));
 
