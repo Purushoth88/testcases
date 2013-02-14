@@ -96,7 +96,7 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
     @Test
     public void basic() throws Exception {
 
-driver.get("http://markavip.com");
+        driver.get("http://markavip.com");
 	//driver.findElementByClassName("do_modal").click();
         driver.findElement(By.className("do_modal")).click();
 	WebDriverWait wait=new WebDriverWait(driver, 25);
@@ -110,7 +110,10 @@ driver.get("http://markavip.com");
 	driver.findElement(By.id("pass")).sendKeys("147852");
 	driver.findElement(By.id("login-send")).click();
 
-	driver.findElement(By.id("super-featured-wrapper")).click();
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.carousel-chunk.big")));
+	driver.findElement(By.cssSelector("div.carousel-chunk.big")).click();
+
+
 	
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
 	driver.findElement(By.cssSelector("div.hover-view")).click();
