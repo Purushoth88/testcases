@@ -31,10 +31,10 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Rami Saleem
+ * @author Ross Rowe
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class Add_To_Cart implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
@@ -68,14 +68,7 @@ public class Add_To_Cart implements SauceOnDemandSessionIdProvider, SauceOnDeman
            authentication = new SauceOnDemandAuthentication();
         }
 
-        DesiredCapabilities capabillities = new DesiredCapabilities();
-        capabillities.setBrowserName(browser);
-        capabillities.setCapability("version", browserVersion);
-        capabillities.setCapability("platform", Platform.valueOf(os));
-        capabillities.setCapability("name", method.getName());
-        this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
-                capabillities);
+
 
  DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
@@ -100,12 +93,10 @@ public class Add_To_Cart implements SauceOnDemandSessionIdProvider, SauceOnDeman
         return (sessionId == null) ? null : sessionId.toString();
     }
 
-
     @Test
+    public void basic() throws Exception {
 
-public void AddToCart() throws Exception {
-
-	driver.get("http://markavip.com");
+driver.get("http://markavip.com");
 	//driver.findElementByClassName("do_modal").click();
         driver.findElement(By.className("do_modal")).click();
 	WebDriverWait wait=new WebDriverWait(driver, 25);
@@ -149,10 +140,10 @@ public void AddToCart() throws Exception {
 	String productnameincart=driver.findElement(By.cssSelector("h2.product-name")).getText();
 	System.out.println(productnameincart);
 	Assert.assertEquals(productnameincart, productname);
+    	
 
-	
-}
 
+    }
 
     @AfterMethod
     public void tearDown() throws Exception {
@@ -168,7 +159,3 @@ public void AddToCart() throws Exception {
         return authentication;
     }
 }
-
-
-
-
