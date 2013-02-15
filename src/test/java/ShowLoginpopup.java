@@ -27,15 +27,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 
 /**
  *
  * @author Rami Saleem
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class WebDriverLogin_From_Campaign_Page implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class ShowLoginpopup implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
@@ -70,13 +69,15 @@ public class WebDriverLogin_From_Campaign_Page implements SauceOnDemandSessionId
         }
 
 
-DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+
+ DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
         desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
         desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
         this.driver = new RemoteWebDriver(
                 new URL("http://icreativeapp:8e40a4f9-07bd-4bdb-88f2-806eb88c63ab@ondemand.saucelabs.com:80/wd/hub"),
                 desiredCapabilities);
+
 
     }
 
@@ -93,40 +94,14 @@ DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
     }
 
     @Test
-    public void Login_From_Campaign_Page() throws Exception {
+    public void Show_Login_popup() throws Exception {
 
 
-        driver.get("http://markavip.com");
-	WebDriverWait wait=new WebDriverWait(driver, 55);
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
-	driver.findElement(By.id("super-featured-wrapper")).click();
-	
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
-	
-	//Add Action Builder to hover the item's box
-	WebElement productbox=driver.findElement(By.className("item-link"));
-	//Hover the product's box
-	Actions builder = new Actions(driver);
-	builder.moveToElement(productbox).build().perform();
-
-	driver.findElement(By.className("hover-view")).click();
-	
-	//Wait until showing the login pop-up
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("fb-login-section")));
-
-	//This to prevent the browser Auto selection for Registration the text-box.
-	wait.until(ExpectedConditions.elementToBeClickable(By.id("register_email")));
-	
-	//Enter login account info
-	driver.findElement(By.id("login_email")).click();
-	driver.findElement(By.id("login_email")).sendKeys("icreativeapp@gmail.com");
-	driver.findElement(By.id("pass")).sendKeys("147852");
-	driver.findElement(By.id("login-send")).click();
-	//driver.findElement(By.id("username_link")).getText();
-	String welcometext="Frid Norse";
-	
-wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
-Assert.assertEquals(driver.findElement(By.id("username_link")).getText(), welcometext);
+driver.get("http://markavip.com");
+    	driver.findElement(By.className("do_modal")).click();
+    	WebDriverWait wait=new WebDriverWait(driver, 25);
+    	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("login-form")));
+    	Assert.assertTrue(driver.findElement(By.className("login-form")).isDisplayed());
     	
 
 
