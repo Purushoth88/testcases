@@ -31,10 +31,10 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Ross Rowe
+ * @author Rami Saleem
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class WebDriver_Show_Login_popup implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
@@ -94,7 +94,7 @@ public class WebDriverWithHelperTest implements SauceOnDemandSessionIdProvider, 
     }
 
     @Test
-    public void basic() throws Exception {
+    public void Show_Login_popup() throws Exception {
 
 
 driver.get("http://markavip.com");
