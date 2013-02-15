@@ -93,7 +93,7 @@ DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
     }
 
     @Test
-    public void Login() throws Exception {
+    public void basicLogin() throws Exception {
 
 
         driver.get("http://markavip.com");
