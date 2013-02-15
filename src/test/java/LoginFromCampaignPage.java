@@ -93,7 +93,7 @@ DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
     }
 
     @Test
-    public void Login_From_Campaign_Page() throws Exception {
+    public void Login() throws Exception {
 
 
         driver.get("http://markavip.com");

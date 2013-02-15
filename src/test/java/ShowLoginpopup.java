@@ -94,7 +94,7 @@ public class ShowLoginpopup implements SauceOnDemandSessionIdProvider, SauceOnDe
     }
 
     @Test
-    public void Show_Login_popup() throws Exception {
+    public void Show() throws Exception {
 
 
 driver.get("http://markavip.com");
