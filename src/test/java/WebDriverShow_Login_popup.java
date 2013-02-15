@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
  * @author Rami Saleem
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class WebDriver_Show_Login_popup implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class WebDriverShow_Login_popup implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
