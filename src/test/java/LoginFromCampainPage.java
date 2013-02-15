@@ -1,5 +1,5 @@
-package test;
-import org.openqa.selenium.remote.CapabilityType;
+
+
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.testng.SauceOnDemandAuthenticationProvider;
@@ -10,9 +10,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.SessionId;
 import org.testng.annotations.*;
+
 import java.lang.reflect.Method;
 import java.net.URL;
+
 import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +37,7 @@ import org.testng.annotations.Test;
  * @author Rami Saleem
  */
 @Listeners({SauceOnDemandTestListener.class})
-public class ShowLoginpopup implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+public class LoginFromCampainPage implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
 
     public SauceOnDemandAuthentication authentication;
 
@@ -68,17 +71,14 @@ public class ShowLoginpopup implements SauceOnDemandSessionIdProvider, SauceOnDe
            authentication = new SauceOnDemandAuthentication();
         }
 
-
-
- DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
-        desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
-        desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+        DesiredCapabilities capabillities = new DesiredCapabilities();
+        capabillities.setBrowserName(browser);
+        capabillities.setCapability("version", browserVersion);
+        capabillities.setCapability("platform", Platform.valueOf(os));
+        capabillities.setCapability("name", method.getName());
         this.driver = new RemoteWebDriver(
-                new URL("http://icreativeapp:8e40a4f9-07bd-4bdb-88f2-806eb88c63ab@ondemand.saucelabs.com:80/wd/hub"),
-                desiredCapabilities);
-
-
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                capabillities);
     }
 
 
@@ -94,7 +94,7 @@ public class ShowLoginpopup implements SauceOnDemandSessionIdProvider, SauceOnDe
     }
 
     @Test
-    public void Showlogin() throws Exception {
+    public void Login_From_Campain_Page() throws Exception {
 
 
 driver.get("http://markavip.com");
