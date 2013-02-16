@@ -160,17 +160,15 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 		
 */
 
-//wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
+
+for(int i=0;i<1000000000;i++)
 	
-  try {
-        Thread.sleep(7000);
-    } catch (InterruptedException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
+{
+	
+	
+}
+	
 
-
-    }
 
     @AfterMethod
     public void tearDown() throws Exception {
