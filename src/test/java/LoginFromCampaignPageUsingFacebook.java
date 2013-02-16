@@ -147,9 +147,6 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 		driver.findElement(By.id("u_0_1")).click();
 		
 
-	driver.get("http://markavip.com");
-
-
 		//Back to MarkaVIP page
 	
 		
