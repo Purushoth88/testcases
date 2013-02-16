@@ -115,9 +115,10 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 	
 	//Save Current Window Name
 		String markavipwindow= driver.getWindowHandle();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("login-form")));	
+		
+//wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("login-form")));	
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.fb-login-section")));
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.fb-login-section")));
 
                 driver.findElement(By.cssSelector("span.icon")).click();
 
