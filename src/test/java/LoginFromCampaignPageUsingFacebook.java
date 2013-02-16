@@ -148,8 +148,8 @@ wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
 		
 		driver.switchTo().window(markavipwindow);
 
-driver.findElement(By.id("register_email")).click();
-driver.findElement(By.id("register_email")).sendKeys("Rami2017");
+driver.findElement(By.cssSelector("a.logo.sp-link.sp-observed")).click();
+
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
 		driver.findElement(By.id("username_link")).getText();
