@@ -97,32 +97,30 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
     public void Login_From_Campaign_Page_Using_Facebook() throws Exception {
 
 
-System.setProperty("webdriver.chrome.driver", "d:/chromedriver.exe");
-	ChromeDriver d2=new ChromeDriver();
-	d2.get("http://markavip.com");
+	driver.get("http://markavip.com");
 	
-	WebDriverWait wait=new WebDriverWait(d2, 5);
+	WebDriverWait wait=new WebDriverWait(driver, 5);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
-	d2.findElement(By.id("super-featured-wrapper")).click();
+	driver.findElement(By.id("super-featured-wrapper")).click();
 	
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
 	
 	//Add Action Builder to hover the item's box
-	WebElement productbox=d2.findElement(By.className("item-link"));
+	WebElement productbox=driver.findElement(By.className("item-link"));
 	//Hover the product's box
-	Actions builder = new Actions(d2);
+	Actions builder = new Actions(driver);
 	builder.moveToElement(productbox).build().perform();
 
-	d2.findElement(By.className("hover-view")).click();
+	driver.findElement(By.className("hover-view")).click();
 	
 	//Save Current Window Name
-		String markavipwindow= d2.getWindowHandle();
+		String markavipwindow= driver.getWindowHandle();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("login-form")));	
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div/div[2]/div[4]/div[1]/a/span[1]")));
-		d2.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[4]/div[1]/a/span[1]")).click();
+		driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[4]/div[1]/a/span[1]")).click();
 		
 		//Save all the pages and popup
-		Set<String> allpages=d2.getWindowHandles();
+		Set<String> allpages=driver.getWindowHandles();
 		Iterator<String> findit=allpages.iterator();
 		
 		//Select Facebook popup
@@ -134,23 +132,23 @@ System.setProperty("webdriver.chrome.driver", "d:/chromedriver.exe");
 			if(!facebookpopup.contains(markavipwindow))
 				
 			{
-				d2.switchTo().window(facebookpopup);
+				driver.switchTo().window(facebookpopup);
 			}
 			
 		}
 		
 
-		d2.findElement(By.id("email")).sendKeys("ramisaleem17@gmail.com");
-		d2.findElement(By.id("pass")).sendKeys("Rami2017");
-		d2.findElement(By.id("u_0_1")).click();
+		driver.findElement(By.id("email")).sendKeys("ramisaleem17@gmail.com");
+		driver.findElement(By.id("pass")).sendKeys("Rami2017");
+		driver.findElement(By.id("u_0_1")).click();
 		
 		//Back to MarkaVIP page
 		
-		d2.switchTo().window(markavipwindow);
+		driver.switchTo().window(markavipwindow);
 
-		d2.findElement(By.id("username_link")).getText();
+		driver.findElement(By.id("username_link")).getText();
 		String name2="Rami Saleem";
-		Assert.assertEquals(d2.findElement(By.id("username_link")).getText(), name2);
+		Assert.assertEquals(driver.findElement(By.id("username_link")).getText(), name2);
 		
 	
     }
