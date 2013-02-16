@@ -151,7 +151,7 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 		//Back to MarkaVIP page
 		
 		driver.switchTo().window(markavipwindow);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
                 driver.findElement(By.cssSelector("a.logo.sp-link sp-observed"));
                 driver.findElement(By.id("tml_men"));
 		driver.findElement(By.id("username_link")).getText();
