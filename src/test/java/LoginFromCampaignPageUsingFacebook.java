@@ -139,18 +139,17 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 
 	
 	
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
 		driver.findElement(By.id("email")).click();
 		driver.findElement(By.id("email")).sendKeys("ramisaleem17@gmail.com");
 		driver.findElement(By.id("pass")).sendKeys("Rami2017");
-
-
+		driver.findElement(By.id("persist_box")).click();
 		driver.findElement(By.id("u_0_1")).click();
 		
 
 		//Back to MarkaVIP page
 		
-		driver.switchTo().window(markavipwindow);
+		//driver.switchTo().window(markavipwindow);
 		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
                 //driver.findElement(By.cssSelector("a.logo.sp-link.sp-observed")).click();
                 //driver.findElement(By.id("tml_men")).click();
