@@ -99,7 +99,7 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 
 	driver.get("http://markavip.com");
 	
-	WebDriverWait wait=new WebDriverWait(driver, 5);
+	WebDriverWait wait=new WebDriverWait(driver, 101);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
 	driver.findElement(By.id("super-featured-wrapper")).click();
 	
@@ -116,11 +116,11 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 	//Save Current Window Name
 		String markavipwindow= driver.getWindowHandle();
 		
-//wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("login-form")));	
+	
 
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.fb-login-section")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Login or Register")));
 
-                driver.findElement(By.cssSelector("span.icon")).click();
+                driver.findElement(By.linkText("Login or Register")).click();
 
 		//Save all the pages and popup
 		Set<String> allpages=driver.getWindowHandles();
