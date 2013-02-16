@@ -118,9 +118,11 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 		
 	
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Login or Register")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("clearfix fb-login-link")));
 
-                driver.findElement(By.linkText("Login or Register")).click();
+
+	driver.findElement(By.className("clearfix fb-login-link")).click();
+
 
 		//Save all the pages and popup
 		Set<String> allpages=driver.getWindowHandles();
