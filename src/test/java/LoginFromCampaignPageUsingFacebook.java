@@ -145,11 +145,15 @@ wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
 
 
 		//Back to MarkaVIP page
+
+	try {
+	    Thread.sleep(5000);
+	} catch(InterruptedException ex) {
+	    Thread.currentThread().interrupt();
+	}
+	
 		
 		driver.switchTo().window(markavipwindow);
-
-driver.findElement(By.cssSelector("a.logo.sp-link.sp-observed")).click();
-driver.findElement(By.id("tml_women")).click();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
 		driver.findElement(By.id("username_link")).getText();
