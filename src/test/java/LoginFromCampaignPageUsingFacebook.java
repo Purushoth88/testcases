@@ -160,7 +160,7 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 		
 */
 
-wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
+//wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
 	
     }
 
