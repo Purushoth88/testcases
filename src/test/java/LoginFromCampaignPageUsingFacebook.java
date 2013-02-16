@@ -142,7 +142,7 @@ wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
 		driver.findElement(By.id("pass")).sendKeys("Rami2017");
 		driver.findElement(By.id("u_0_1")).click();
 		
-if ((driver.findElement(By.id("u_0_1")).display())==false)
+if ((driver.findElement(By.id("u_0_1")).isDisplayed())==false)
 
 {
 
