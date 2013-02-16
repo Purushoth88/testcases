@@ -140,6 +140,9 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 	
 	
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
+                
+driver.manage().window().setSize(screenResolution); 
+
 		driver.findElement(By.id("email")).click();
 		driver.findElement(By.id("email")).sendKeys("ramisaleem17@gmail.com");
 		driver.findElement(By.id("pass")).sendKeys("Rami2017");
