@@ -142,15 +142,15 @@ wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
 		driver.findElement(By.id("pass")).sendKeys("Rami2017");
 		driver.findElement(By.id("u_0_1")).click();
 		
-if ((driver.findElement(By.id("booklet")).isDisplayed())==false)
 
-{
 
 		//Back to MarkaVIP page
 		
 		driver.switchTo().window(markavipwindow);
 
-}
+driver.findElement(By.id("register_email")).click();
+driver.findElement(By.id("register_email")).sendKeys("Rami2017");
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
 		driver.findElement(By.id("username_link")).getText();
 		String name2="Rami Saleem";
