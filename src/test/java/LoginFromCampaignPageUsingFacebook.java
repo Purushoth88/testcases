@@ -137,7 +137,7 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 			
 		}
 
-	}
+	
 	
 
 		driver.findElement(By.id("email")).sendKeys("ramisaleem17@gmail.com");
@@ -149,6 +149,7 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 
 		//Back to MarkaVIP page
 	
+driver.get("http://markavip.com");
 		
 		driver.switchTo().window(markavipwindow);
 
