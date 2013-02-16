@@ -154,7 +154,8 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 		
 		driver.switchTo().window(markavipwindow);
 		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
-		driver.findElement(By.id("username_link")).getText();
+		driver.navigate.refresh();
+                driver.findElement(By.id("username_link")).getText();
 		String name2="Rami Saleem";
 		Assert.assertEquals(driver.findElement(By.id("username_link")).getText(), name2);
 		
