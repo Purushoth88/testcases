@@ -115,13 +115,8 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 	
 	//Save Current Window Name
 		String markavipwindow= driver.getWindowHandle();
-		
-	
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.clearfix.fb-login-link")));
-
-
-	driver.findElement(By.cssSelector("a.clearfix.fb-login-link")).click();
+	        driver.findElement(By.cssSelector("a.clearfix.fb-login-link")).click();
 
 
 		//Save all the pages and popup
@@ -142,7 +137,7 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 			
 		}
 		
-
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
 		driver.findElement(By.id("email")).sendKeys("ramisaleem17@gmail.com");
 		driver.findElement(By.id("pass")).sendKeys("Rami2017");
 		driver.findElement(By.id("u_0_1")).click();
