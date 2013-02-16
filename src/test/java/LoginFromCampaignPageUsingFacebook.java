@@ -149,8 +149,6 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 		
 
 		//Back to MarkaVIP page
-	
-/*
 		
 		driver.switchTo().window(markavipwindow);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
@@ -158,15 +156,6 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 		String name2="Rami Saleem";
 		Assert.assertEquals(driver.findElement(By.id("username_link")).getText(), name2);
 		
-*/
-
-for(int i=0;i<1000000000;i++)
-	
-{
-	
-	System.out.println("Fuck you");
-}
-
 
 }	
 
