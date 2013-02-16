@@ -97,46 +97,9 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
     public void Login_From_Campaign_Page_Using_Facebook() throws Exception {
 
 
-	driver.get("http://markavip.com");
+
 	
 	WebDriverWait wait=new WebDriverWait(driver, 101);
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("super-featured-wrapper")));
-	driver.findElement(By.id("super-featured-wrapper")).click();
-	
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("itemscount")));
-	
-	//Add Action Builder to hover the item's box
-	WebElement productbox=driver.findElement(By.className("item-link"));
-	//Hover the product's box
-	Actions builder = new Actions(driver);
-	builder.moveToElement(productbox).build().perform();
-
-	driver.findElement(By.className("hover-view")).click();
-	
-	//Save Current Window Name
-		String markavipwindow= driver.getWindowHandle();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.clearfix.fb-login-link")));
-	        driver.findElement(By.cssSelector("a.clearfix.fb-login-link")).click();
-
-
-		//Save all the pages and popup
-		Set<String> allpages=driver.getWindowHandles();
-		Iterator<String> findit=allpages.iterator();
-		
-		//Select Facebook popup
-		while(findit.hasNext())
-		
-		{
-			String facebookpopup=findit.next().toString();
-			
-			if(!facebookpopup.contains(markavipwindow))
-				
-			{
-				driver.switchTo().window(facebookpopup);
-			}
-			
-		}
-
 	
 driver.get("https://www.facebook.com/login.php?api_key=246052772130187&skip_api_login=1&display=popup&cancel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D18%23cb%3Df7a8e1e8%26origin%3Dhttp%253A%252F%252Fmarkavip.com%252Ffbd68c72c%26domain%3Dmarkavip.com%26relation%3Dopener%26frame%3Df3187a109c%26error_reason%3Duser_denied%26error%3Daccess_denied%26error_description%3DThe%2Buser%2Bdenied%2Byour%2Brequest.&fbconnect=1&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fpermissions.request%3F_path%3Dpermissions.request%26app_id%3D246052772130187%26client_id%3D246052772130187%26redirect_uri%3Dhttp%253A%252F%252Fstatic.ak.facebook.com%252Fconnect%252Fxd_arbiter.php%253Fversion%253D18%2523cb%253Df7a8e1e8%2526origin%253Dhttp%25253A%25252F%25252Fmarkavip.com%25252Ffbd68c72c%2526domain%253Dmarkavip.com%2526relation%253Dopener%2526frame%253Df3187a109c%26sdk%3Djoey%26display%3Dpopup%26response_type%3Dtoken%252Csigned_request%26domain%3Dmarkavip.com%26perms%3Demail%26fbconnect%3D1%26from_login%3D1&rcount=1");
 	
