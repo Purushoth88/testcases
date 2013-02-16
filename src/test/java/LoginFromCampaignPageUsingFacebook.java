@@ -136,35 +136,21 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 			}
 			
 		}
-		
-wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
-	try {
-	    Thread.sleep(5000);
-	} catch(InterruptedException ex) {
-	    Thread.currentThread().interrupt();
+
 	}
 	
 
 		driver.findElement(By.id("email")).sendKeys("ramisaleem17@gmail.com");
 		driver.findElement(By.id("pass")).sendKeys("Rami2017");
-	try {
-	    Thread.sleep(5000);
-	} catch(InterruptedException ex) {
-	    Thread.currentThread().interrupt();
-	}
-	
+
 
 		driver.findElement(By.id("u_0_1")).click();
 		
 
+	driver.get("http://markavip.com");
+
 
 		//Back to MarkaVIP page
-
-	try {
-	    Thread.sleep(5000);
-	} catch(InterruptedException ex) {
-	    Thread.currentThread().interrupt();
-	}
 	
 		
 		driver.switchTo().window(markavipwindow);
