@@ -150,10 +150,10 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 
 		//Back to MarkaVIP page
 	
-driver.get("http://markavip.com");
+
 		
 		driver.switchTo().window(markavipwindow);
-
+driver.get("http://markavip.com");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
 		driver.findElement(By.id("username_link")).getText();
 		String name2="Rami Saleem";
