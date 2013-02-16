@@ -130,6 +130,12 @@ wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.clear
 */
 		
 
+
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
+                driver.findElement(By.id("username_link")).getText();
+		String name2="Rami Saleem";
+		Assert.assertEquals(driver.findElement(By.id("username_link")).getText(), name2);
+
 }	
 
 
