@@ -116,9 +116,11 @@ public class LoginFromCampaignPageUsingFacebook implements SauceOnDemandSessionI
 	//Save Current Window Name
 		String markavipwindow= driver.getWindowHandle();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("login-form")));	
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div/div[2]/div[4]/div[1]/a/span[1]")));
-		driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[4]/div[1]/a/span[1]")).click();
-		
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.icon")));
+
+                driver.findElement(By.cssSelector("span.icon")).click();
+
 		//Save all the pages and popup
 		Set<String> allpages=driver.getWindowHandles();
 		Iterator<String> findit=allpages.iterator();
