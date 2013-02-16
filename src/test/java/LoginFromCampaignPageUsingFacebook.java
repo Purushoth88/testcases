@@ -149,7 +149,7 @@ wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
 		driver.switchTo().window(markavipwindow);
 
 driver.findElement(By.cssSelector("a.logo.sp-link.sp-observed")).click();
-
+driver.findElement(By.id("tml_women")).click();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username_link")));
 		driver.findElement(By.id("username_link")).getText();
